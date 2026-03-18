@@ -1,0 +1,156 @@
+in hinglish what is javascript ? 
+
+JavaScript ek programming language hai jo mainly web pages ko dynamic aur interactive banane ke liye use hoti hai.
+
+Simple words me:
+
+👉 HTML → structure banata hai
+👉 CSS → design / styling karta hai
+👉 JavaScript → webpage ko interactive aur smart banata hai
+
+JavaScript kya karta hai
+
+JavaScript se hum web page me bahut saare kaam kar sakte hain, jaise:
+
+Button click pe action
+
+Form validation
+
+API se data lana
+
+Animations
+
+Real-time updates
+
+Dynamic content show karna
+
+Example:
+
+document.getElementById("btn").onclick = function() {
+  alert("Button clicked");
+};
+
+Agar user button pe click karega to alert message show hoga.
+
+Simple Example
+HTML
+<button onclick="showMessage()">Click Me</button>
+JavaScript
+function showMessage() {
+  alert("Hello User");
+}
+
+User button click karega → JavaScript run hoga → message show hoga.
+
+JavaScript kaha run hota hai
+
+JavaScript browser ke andar run hota hai.
+
+Examples of browsers:
+
+Google Chrome
+
+Mozilla Firefox
+
+Microsoft Edge
+
+Browser ke andar JavaScript Engine hota hai jo code run karta hai.
+
+Example:
+
+V8 (Chrome me use hota hai)
+
+JavaScript ka use kaha hota hai
+
+1️⃣ Frontend development
+Web page interactive banane ke liye.
+
+Frameworks:
+
+Angular
+
+React
+
+Vue.js
+
+2️⃣ Backend development
+
+JavaScript backend me bhi use hota hai using:
+
+Node.js
+
+3️⃣ Mobile apps
+
+Example:
+
+React Native
+
+4️⃣ Desktop apps
+
+Example:
+
+Electron
+
+JavaScript ke main features
+
+Lightweight language
+
+Interpreted language
+
+Event-based
+
+Object-oriented
+
+Asynchronous programming support
+
+Short Definition (Interview style)
+
+JavaScript ek high-level scripting language hai jo web pages ko dynamic aur interactive banane ke liye use hoti hai.
+
+✅ Agar chaho to main ye bhi explain kar sakta hu (interview ke liye bahut important):
+
+JavaScript kaise kaam karta hai internally
+
+Event Loop kya hota hai
+
+Call Stack + Web APIs + Callback Queue
+
+Browser JavaScript kaise run karta hai
+
+Ye concept Angular developer interviews me bahut puchte hain. 🚀
+
+
+
+
+
+
+
+JavaScript is a high-level, interpreted programming language primarily used to create dynamic and interactive web applications. It runs in the browser and allows developers to manipulate web page content, handle user events, communicate with servers, and update the UI without reloading the page.
+
+JavaScript is one of the core technologies of web development, along with HTML and CSS.
+
+HTML defines the structure of a webpage
+
+CSS handles the styling and layout
+
+JavaScript adds behavior and interactivity
+
+JavaScript follows the ECMAScript standard and supports multiple programming paradigms such as event-driven, functional, and object-oriented programming.
+
+It can run not only in browsers but also on the server side using platforms like Node.js.
+
+Example Uses of JavaScript
+
+Form validation
+
+Dynamic content updates
+
+Handling user actions (click, scroll, input)
+
+Making API requests (AJAX / Fetch)
+
+Building single-page applications using frameworks like Angular or React.
+
+Short Interview Definition
+
+JavaScript is a high-level, interpreted scripting language used to build dynamic and interactive web applications by enabling client-side logic, event handling, and communication with servers.

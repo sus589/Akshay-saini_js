@@ -1,0 +1,179 @@
+## in hinglish  in javascript hoisting kya hai , aye kis liye use hota hai ? kab and q use hota hai mujhe example deke samjhao aur interview k liye coding question v dedo 
+
+Chalo simple Hinglish me samajhte hain 👇
+
+🔹 JavaScript Hoisting kya hai?
+
+Hoisting ka matlab hai:
+👉 JavaScript variables aur functions ko code run hone se pehle hi memory me upar le jana (top pe le jana)
+
+Matlab:
+
+Tumne variable niche likha hai
+
+But JS usko pehle hi "declare" kar deta hai memory me
+
+🔹 Simple Example
+console.log(a); 
+var a = 10;
+Output:
+undefined
+Kyu?
+
+Behind the scene JS aise treat karta hai:
+
+var a;        // hoisted
+console.log(a); // undefined
+a = 10;
+
+👉 isliye error nahi aata, bas undefined aata hai
+
+🔹 let & const me kya hota hai?
+console.log(b);
+let b = 20;
+Output:
+
+❌ Error: Cannot access before initialization
+
+👉 kyunki:
+
+let aur const bhi hoist hote hain
+
+BUT temporal dead zone (TDZ) me rehte hain
+
+🔹 Function Hoisting
+1. Function Declaration
+sayHello();
+
+function sayHello() {
+  console.log("Hello");
+}
+
+✅ Output:
+
+Hello
+
+👉 pura function hoist hota hai
+
+2. Function Expression
+sayHi();
+
+var sayHi = function() {
+  console.log("Hi");
+};
+
+❌ Output:
+
+TypeError: sayHi is not a function
+
+👉 kyunki:
+
+sirf variable hoist hua (undefined)
+
+function nahi
+
+🔹 Hoisting ka use kyu hota hai?
+
+Direct tum "use" nahi karte hoisting ko ❌
+👉 ye JS ka internal behavior hai
+
+BUT:
+
+Code execution samajhne me help karta hai
+
+Bugs avoid karne me help karta hai
+
+Interview me important hai
+
+🔹 Kab aur kyu important hai?
+
+👉 Real life me jab:
+
+variable undefined aa raha ho
+
+function call error de raha ho
+
+debugging kar rahe ho
+
+👉 Tab hoisting samajhna zaroori hai
+
+🔹 Best Practice
+
+✔ Always:
+
+let / const use karo
+variables top pe declare karo
+
+❌ Avoid:
+
+var use karna (confusing hoisting)
+🔹 Interview Coding Questions
+Q1️⃣ Output kya hoga?
+console.log(x);
+var x = 5;
+
+👉 Answer:
+
+undefined
+Q2️⃣ Output kya hoga?
+console.log(y);
+let y = 10;
+
+👉 Answer:
+
+ReferenceError
+Q3️⃣ Output kya hoga?
+foo();
+
+function foo() {
+  console.log("Hello");
+}
+
+👉 Answer:
+
+Hello
+Q4️⃣ Output kya hoga?
+foo();
+
+var foo = function() {
+  console.log("Hi");
+};
+
+👉 Answer:
+
+TypeError
+Q5️⃣ Tricky Question 🔥
+var a = 1;
+
+function test() {
+  console.log(a);
+  var a = 2;
+}
+
+test();
+
+👉 Output:
+
+undefined
+
+👉 Behind the scene:
+
+function test() {
+  var a;          // hoisted
+  console.log(a); // undefined
+  a = 2;
+}
+🔹 Short Interview Line (Important)
+
+👉 Agar interviewer puche:
+
+"What is hoisting?"
+
+👉 Answer bolo:
+
+"Hoisting is JavaScript's default behavior where variable and function declarations are moved to the top of their scope during the compilation phase."
+
+Agar chaho toh main tumhe real project me hoisting ka use + tricky interview questions + MCQs bhi de sakta hoon 👍
+
+
+

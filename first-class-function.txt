@@ -1,0 +1,16 @@
+Chalo First-Class Functions (First-Class Citizens) ko ekdum simple Hinglish + interview level me samajhte hain 👇
+
+🔹 First-Class Function kya hota hai?
+
+👉 JavaScript me functions ko normal values ki tarah treat kiya jata hai
+👉 isi ko bolte hain First-Class Function
+
+🔹 Simple Definition (Interview Line)
+
+"In JavaScript, functions are first-class citizens, meaning they can be assigned to variables, passed as arguments, and returned from other functions."
+
+🔹 Iska matlab kya hai? (4 points 🔥)
+
+JS me function ko:
+
+✅ 1

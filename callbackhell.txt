@@ -1,0 +1,178 @@
+Chalo simple Hinglish me samajhte hain 👇
+
+🔥 Callback Hell kya hai?
+
+👉 Callback Hell ek situation hoti hai jab hum multiple nested callbacks (function ke andar function ke andar function...) likhte rehte hain aur code bohot messy + unreadable ho jata hai.
+
+Isko "Pyramid of Doom" bhi bolte hain 😅
+
+📌 Callback kya hota hai (basic samajh lo)
+
+👉 Callback = ek function jo dusre function ko argument ke roop me pass hota hai
+
+function greet(name, callback) {
+  console.log("Hello " + name);
+  callback();
+}
+
+function sayBye() {
+  console.log("Bye!");
+}
+
+greet("Susmita", sayBye);
+😵 Callback Hell ka Example
+
+Maan lo tum API calls kar rahe ho step by step:
+
+getUser(function(user) {
+  getOrders(user.id, function(orders) {
+    getOrderDetails(orders[0], function(details) {
+      getPayment(details, function(payment) {
+        console.log(payment);
+      });
+    });
+  });
+});
+
+👉 Ye dekh 👀
+
+Code right side me shift ho raha hai
+
+Samajhna mushkil ho raha hai
+
+Error handle karna difficult
+
+👉 Ye hi Callback Hell hai
+
+🤔 Callback Hell kyu hota hai?
+
+Async operations (API call, DB call, file read)
+
+Jab ek ka result dusre pe depend karta hai
+
+Har step ke baad next callback likhna padta hai
+
+🎯 Kab use hota hai?
+
+Callback hell intentionally use nahi hota ❌
+👉 Ye automatically ho jata hai jab:
+
+Multiple async kaam ek ke baad ek karte ho
+
+Jaise:
+
+API chaining
+
+File processing
+
+Login → fetch data → show UI
+
+⚠️ Problem kya hai?
+
+❌ Code unreadable
+
+❌ Maintain karna mushkil
+
+❌ Debugging hard
+
+❌ Error handling complex
+
+✅ Solution kya hai?
+
+👉 Modern JS me 3 solutions:
+
+1. Promises
+getUser()
+  .then(user => getOrders(user.id))
+  .then(orders => getOrderDetails(orders[0]))
+  .then(details => getPayment(details))
+  .then(payment => console.log(payment))
+  .catch(err => console.log(err));
+2. Async / Await (Best 👍)
+async function getData() {
+  try {
+    const user = await getUser();
+    const orders = await getOrders(user.id);
+    const details = await getOrderDetails(orders[0]);
+    const payment = await getPayment(details);
+
+    console.log(payment);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+getData();
+💡 Real Life Analogy
+
+👉 Socho tum chai bana rahe ho:
+
+Paani garam karo
+
+Chai patti daalo
+
+Doodh daalo
+
+Sugar daalo
+
+Agar har step ke baad tum kisi ko call karo aur wo next step bataye = callback hell 😅
+
+🧠 Interview Ready Definition
+
+👉 Callback Hell is a situation in JavaScript where multiple nested callbacks make the code difficult to read, maintain, and debug. It usually occurs when handling asynchronous operations.
+
+💻 Interview Coding Question
+❓ Question:
+
+Convert this callback-based code into async/await:
+
+function getData(callback) {
+  setTimeout(() => {
+    callback("Data received");
+  }, 1000);
+}
+
+getData(function(result) {
+  console.log(result);
+});
+✅ Expected Answer:
+function getData() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Data received");
+    }, 1000);
+  });
+}
+
+async function fetchData() {
+  const result = await getData();
+  console.log(result);
+}
+
+fetchData();
+🔥 Ek aur tricky interview question
+
+👉 Output batao:
+
+setTimeout(() => {
+  console.log("A");
+
+  setTimeout(() => {
+    console.log("B");
+
+    setTimeout(() => {
+      console.log("C");
+    }, 1000);
+
+  }, 1000);
+
+}, 1000);
+
+👉 Answer:
+After 1s → A
+After 2s → B
+After 3s → C
+
+👉 Ye bhi ek mini callback hell example hai
+
+Agar chaho toh mai tumhe Promises vs Async/Await deep + real Angular API example bhi samjha sakta hoon (interview level 🚀)

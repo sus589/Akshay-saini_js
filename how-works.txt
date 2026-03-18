@@ -1,0 +1,176 @@
+synchronous ,  singlethreaded  , 
+every thing happens in js inside an execution context 
+
+
+what is javascript?
+
+
+
+
+
+
+in hinglish in javascript exection context, what happen when you run javascript code behind?  tell me about memory execution phase and code execution phase with example 
+
+
+
+Jab bhi JavaScript code run hota hai, engine usko directly line-by-line execute nahi karta. Sabse pehle Execution Context create hota hai. Isme 2 main phases hote hain:
+
+1️⃣ Memory Creation Phase (Hoisting phase)
+2️⃣ Code Execution Phase
+
+Chalo simple example se samjhte hain.
+
+1️⃣ Memory Creation Phase (Hoisting Phase)
+
+Is phase me JavaScript engine variables aur functions ke liye memory allocate karta hai, lekin code run nahi karta.
+
+Rules:
+
+var variables → undefined assign hota hai
+
+function declarations → poora function memory me store ho jata hai
+
+let / const → memory me place reserve hota hai but initialize nahi hota (Temporal Dead Zone)
+
+Example
+var a = 10;
+var b = 20;
+
+function add() {
+  console.log(a + b);
+}
+
+add();
+Memory Creation Phase me kya hoga
+Name	Memory Value
+a	undefined
+b	undefined
+add	function code
+
+Is stage me sirf memory allocate hoti hai.
+
+2️⃣ Code Execution Phase
+
+Ab JavaScript line-by-line code run karta hai.
+
+Step by step
+var a = 10;
+
+➡ memory me a = undefined tha
+➡ ab 10 assign ho gaya
+
+a = 10
+var b = 20;
+b = 20
+add();
+
+➡ function call hua
+➡ new Function Execution Context create hoga
+
+Function ke andar:
+
+console.log(a + b);
+
+Output:
+
+30
+Visual Flow
+Step 1 → Memory Phase
+Global Execution Context
+
+a → undefined
+b → undefined
+add → function(){...}
+Step 2 → Execution Phase
+a → 10
+b → 20
+add() call
+
+Output
+
+30
+Ek aur example (Hoisting samajhne ke liye)
+console.log(x);
+var x = 5;
+
+Memory Phase:
+
+x → undefined
+
+Execution Phase:
+
+console.log(x) → undefined
+x = 5
+
+Output
+
+undefined
+Function Hoisting Example
+sayHello();
+
+function sayHello() {
+  console.log("Hello");
+}
+
+Memory Phase
+
+sayHello → function(){...}
+
+Execution Phase
+
+sayHello() call
+
+Output
+
+Hello
+Simple Words me
+JavaScript code run hone se pehle
+Step 1 → Memory Allocate (Hoisting)
+Step 2 → Code Execute
+Real Life Analogy
+
+Socho exam hall me:
+
+Memory Phase
+
+Teacher bolta hai:
+
+Roll number assign karo
+
+Seats assign karo
+
+Execution Phase
+
+Ab actual exam start hota hai.
+
+Execution Context ke andar kya hota hai
+
+Execution Context ke 2 main parts hote hain:
+
+1️⃣ Memory Component (Variable Environment)
+2️⃣ Code Component (Thread of Execution)
+
+Execution Context
+
+Memory
+a → undefined
+b → undefined
+
+Code
+line by line execute
+Advanced (Interview me puchte hai)
+
+JavaScript me 3 types execution context hote hain:
+
+1️⃣ Global Execution Context
+2️⃣ Function Execution Context
+3️⃣ Eval Execution Context
+
+Mostly:
+
+Global → Function → Function
+
+Stack me store hote hain (Call Stack).
+
+✅ Agar chaho toh main Execution Context + Call Stack + Hoisting + Scope chain ek real JavaScript project example se bhi samjha sakta hu jo Angular / real apps me hota hai.
+Ye concept JavaScript ka sabse important concept hai interviews me.

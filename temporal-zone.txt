@@ -1,0 +1,208 @@
+## in hinglish in javascript const , let , temporal dead zone kya hai , aye kis liye use hota hai ? kab and q use hota hai mujhe example deke samjhao aur interview k liye coding question v dedo
+
+Chalo let, const aur Temporal Dead Zone (TDZ) ko ekdum simple Hinglish + interview level me samajhte hain 👇
+
+🔹 1. let kya hota hai?
+
+👉 let ek variable declare karne ka modern way hai
+
+Example:
+let a = 10;
+a = 20; // ✔ allowed
+console.log(a);
+
+👉 Output:
+
+20
+Features:
+
+Block scope ✔
+
+Re-assign allowed ✔
+
+Re-declare ❌
+
+🔹 2. const kya hota hai?
+
+👉 const = constant variable (value change nahi kar sakte)
+
+Example:
+const b = 10;
+// b = 20; ❌ error
+console.log(b);
+
+👉 Output:
+
+10
+⚠ Important (Tricky)
+const obj = { name: "Susmita" };
+
+obj.name = "Riya"; // ✔ allowed
+console.log(obj.name);
+
+👉 Output:
+
+Riya
+
+👉 kyunki:
+
+reference constant hai
+
+object ke andar change allowed hai
+
+🔹 3. Temporal Dead Zone (TDZ) kya hota hai?
+
+👉 TDZ = wo time jab variable declare hone se pehle access nahi kar sakte
+
+👉 simple:
+
+"Declaration se pehle variable use nahi kar sakte"
+
+Example 🔥
+console.log(a);
+let a = 10;
+
+👉 Output:
+
+ReferenceError
+
+👉 kyun?
+
+let hoist hota hai ✔
+
+BUT TDZ me hota hai ❌
+
+🔹 TDZ ko samjho timeline se
+// TDZ start
+console.log(a); ❌
+// TDZ end
+let a = 10;
+🔹 var vs let vs const
+Feature	var	let	const
+Scope	Function	Block	Block
+Hoisting	✔ (undefined)	✔ (TDZ)	✔ (TDZ)
+Reassign	✔	✔	❌
+Redeclare	✔	❌	❌
+🔹 Real Example
+if (true) {
+  let x = 10;
+  const y = 20;
+  var z = 30;
+}
+
+console.log(z); // ✔ 30
+// console.log(x); ❌ error
+// console.log(y); ❌ error
+🔹 Use kyu hota hai?
+✅ let
+
+jab value change karni ho
+
+✅ const
+
+jab fixed value ho
+
+config, API URL, constants
+
+✅ TDZ
+
+accidental bugs avoid karne ke liye
+
+🔹 Kab use hota hai?
+
+👉 Real projects me:
+
+Angular variables (let in loops)
+
+constants (const API_URL)
+
+block safety (if/for)
+
+🔹 Interview Coding Questions 🔥
+Q1️⃣ Output kya hoga?
+console.log(a);
+var a = 5;
+
+👉 Answer:
+
+undefined
+Q2️⃣ Output kya hoga?
+console.log(b);
+let b = 10;
+
+👉 Answer:
+
+ReferenceError
+Q3️⃣ Output kya hoga?
+const x = 10;
+x = 20;
+
+👉 Answer:
+
+TypeError
+Q4️⃣ Tricky 🔥
+const obj = { a: 1 };
+obj.a = 2;
+console.log(obj.a);
+
+👉 Answer:
+
+2
+Q5️⃣ Block Scope
+if (true) {
+  let a = 10;
+}
+console.log(a);
+
+👉 Answer:
+
+ReferenceError
+Q6️⃣ TDZ Tricky 🔥
+let a = 10;
+
+function test() {
+  console.log(a);
+  let a = 20;
+}
+
+test();
+
+👉 Answer:
+
+ReferenceError
+
+👉 kyunki function ke andar a TDZ me hai
+
+🔹 Interview One-Line Answer
+
+👉 Agar interviewer puche:
+
+"What is Temporal Dead Zone?"
+
+👉 bolo:
+
+"Temporal Dead Zone is the time between variable hoisting and initialization where accessing a let or const variable results in a ReferenceError."
+
+🔥 Pro Tips
+
+👉 Always use:
+
+const by default ✔
+
+let when change needed ✔
+
+avoid var ❌
+
+👉 yaad rakho:
+
+let/const hoist hote hain but TDZ me rehte hain
+
+var hoist hota hai with undefined
+
+Agar chaho toh next level bhi sikha deta hoon 🚀
+👉 let vs const tricky interview MCQs
+👉 hoisting + TDZ deep
+👉 real Angular use-case
+
+Bolna 👍
+

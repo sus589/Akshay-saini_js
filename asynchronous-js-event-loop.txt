@@ -1,0 +1,268 @@
+## in hinglish  in javascript Asynchronus javascript and Event loop kya hai , aye kis liye use hota hai ? kab and q use hota hai mujhe example deke samjhao aur interview k liye coding question v dedo 
+
+Chalo Asynchronous JavaScript + Event Loop ko ekdum simple Hinglish me step-by-step samajhte hain 👇
+
+🔹 Asynchronous JavaScript kya hota hai?
+
+👉 JS by default single-threaded + synchronous hota hai
+👉 matlab ek time pe ek kaam
+
+👉 BUT:
+
+Async JS allow karta hai background me kaam karna without blocking main thread
+
+🔹 Simple Example
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Async Task");
+}, 2000);
+
+console.log("End");
+
+👉 Output:
+
+Start
+End
+Async Task
+
+👉 kyun?
+
+setTimeout async hai → wait nahi karta
+
+🔹 Sync vs Async Difference
+Feature	Sync	Async
+Execution	Line by line	Background me
+Blocking	Yes	No
+Example	normal code	API call, setTimeout
+🔹 Async ka use kyu hota hai?
+
+👉 Real life me:
+
+API calls (data fetch)
+
+Timers (setTimeout)
+
+File reading
+
+User events
+
+👉 Goal:
+✔ UI freeze na ho
+✔ fast experience mile
+
+🔹 Event Loop kya hota hai? 🔥
+
+👉 Event Loop = JS ka system jo decide karta hai kaunsa code kab execute hoga
+
+🔹 Components samjho
+1. Call Stack
+
+👉 jaha functions execute hote hain
+
+2. Web APIs
+
+👉 browser handle karta hai async tasks
+(e.g. setTimeout, DOM events)
+
+3. Callback Queue
+
+👉 async tasks complete hone ke baad yaha aate hain
+
+4. Event Loop
+
+👉 check karta hai:
+
+stack empty hai?
+
+haan → queue se task uthao
+
+🔹 Flow Diagram (Simple)
+Call Stack → Web API → Callback Queue → Event Loop → Call Stack
+🔹 Example (Event Loop)
+console.log("1");
+
+setTimeout(() => {
+  console.log("2");
+}, 0);
+
+console.log("3");
+
+👉 Output:
+
+1
+3
+2
+🔹 Yaha kya ho raha hai?
+
+1 print
+
+setTimeout → Web API me gaya
+
+3 print
+
+Stack empty → Event loop queue check karega
+
+2 execute
+
+🔹 Microtask vs Macrotask (Advanced 🔥)
+
+👉 Priority system hota hai:
+
+Microtask (High Priority)
+
+Promise
+
+queueMicrotask
+
+Macrotask (Low Priority)
+
+setTimeout
+
+setInterval
+
+🔹 Example
+console.log("Start");
+
+setTimeout(() => console.log("Timeout"), 0);
+
+Promise.resolve().then(() => console.log("Promise"));
+
+console.log("End");
+
+👉 Output:
+
+Start
+End
+Promise
+Timeout
+
+👉 kyunki:
+
+Promise = microtask → pehle execute
+
+🔹 Real Life Example (API)
+function fetchData() {
+  setTimeout(() => {
+    console.log("Data received");
+  }, 2000);
+}
+
+fetchData();
+console.log("Loading...");
+
+👉 Output:
+
+Loading...
+Data received
+🔹 Kab aur kyu use hota hai?
+
+👉 Real projects me:
+
+Angular API calls (HttpClient)
+
+User clicks
+
+Timers
+
+Background processing
+
+👉 Without async:
+❌ UI freeze ho jayega
+✔ Async → smooth UI
+
+🔹 Interview Coding Questions 🔥
+Q1️⃣ Output kya hoga?
+console.log("A");
+
+setTimeout(() => {
+  console.log("B");
+}, 0);
+
+console.log("C");
+
+👉 Answer:
+
+A
+C
+B
+Q2️⃣ Output kya hoga?
+console.log("1");
+
+Promise.resolve().then(() => console.log("2"));
+
+console.log("3");
+
+👉 Answer:
+
+1
+3
+2
+Q3️⃣ Tricky 🔥
+console.log("Start");
+
+setTimeout(() => console.log("Timeout"), 0);
+
+Promise.resolve().then(() => console.log("Promise"));
+
+console.log("End");
+
+👉 Answer:
+
+Start
+End
+Promise
+Timeout
+Q4️⃣ Order batao
+setTimeout(() => console.log("A"), 1000);
+setTimeout(() => console.log("B"), 0);
+console.log("C");
+
+👉 Answer:
+
+C
+B
+A
+Q5️⃣ Real scenario
+
+👉 Question:
+Kaunsa pehle execute hoga?
+
+setTimeout(() => console.log("1"), 0);
+Promise.resolve().then(() => console.log("2"));
+console.log("3");
+
+👉 Answer:
+
+3
+2
+1
+🔹 Interview One-Line Answer
+
+👉 Agar interviewer puche:
+
+"What is Event Loop?"
+
+👉 bolo:
+
+"The event loop is a mechanism in JavaScript that manages asynchronous operations by moving tasks from the callback queue to the call stack when it becomes empty."
+
+🔥 Pro Tips
+
+👉 Important yaad rakho:
+
+JS = single-threaded
+
+Async = non-blocking
+
+Event loop = scheduler
+
+Promise > setTimeout (priority)
+
+Agar chaho toh next level bhi sikha deta hoon 🚀
+👉 Promises deep
+👉 async/await real project
+👉 Angular HTTP + async flow
+
+Bolna 👍
+

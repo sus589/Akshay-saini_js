@@ -1,0 +1,408 @@
+## in hinglish in javascript promises kya hai , aye kis liye use hota hai ? kab and q use hota hai mujhe example deke samjhao aur interview k liye coding question v dedo
+
+Chalo ab Promises ko ekdum clear Hinglish me samajhte hain 👇
+
+🔥 Promise kya hai?
+
+👉 Promise JavaScript ka ek object hai jo future me aane wale result ko represent karta hai.
+
+👉 Simple words me:
+"Abhi result nahi mila hai, but future me milega (success ya fail)"
+
+📦 Real-life Example
+
+👉 Socho tumne Swiggy pe order kiya 🍔
+
+Order placed → Pending
+
+Food mil gaya → Resolved (Success)
+
+Delivery fail → Rejected (Fail)
+
+👉 Yehi Promise ka concept hai!
+
+🧠 Promise ke 3 States
+
+Pending ⏳ → abhi kaam chal raha hai
+
+Resolved (Fulfilled) ✅ → kaam success ho gaya
+
+Rejected ❌ → kaam fail ho gaya
+
+📌 Promise ka basic syntax
+const myPromise = new Promise((resolve, reject) => {
+  let success = true;
+
+  if (success) {
+    resolve("Data mil gaya");
+  } else {
+    reject("Error aa gaya");
+  }
+});
+🎯 Promise ko use kaise karte hain?
+
+👉 .then() → success ke liye
+👉 .catch() → error ke liye
+
+myPromise
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+😵 Callback Hell vs Promise
+❌ Callback Hell
+getUser(function(user) {
+  getOrders(user.id, function(orders) {
+    getDetails(orders[0], function(details) {
+      console.log(details);
+    });
+  });
+});
+✅ Promise (Clean Code)
+getUser()
+  .then(user => getOrders(user.id))
+  .then(orders => getDetails(orders[0]))
+  .then(details => console.log(details))
+  .catch(err => console.log(err));
+
+👉 Code readable ho gaya 👍
+
+🤔 Promise kis liye use hota hai?
+
+👉 Mainly asynchronous operations ke liye:
+
+API calls 🌐
+
+Database calls 🗄️
+
+File reading 📂
+
+setTimeout ⏱️
+
+📌 Kab use karte hain?
+
+👉 Jab:
+
+Tumhe future me result chahiye
+
+Async kaam ho raha ho
+
+Multiple operations chain karne ho
+
+💡 Q use karte hain?
+
+👉 Because:
+
+Code clean hota hai ✅
+
+Callback hell avoid hota hai ✅
+
+Error handling easy hota hai ✅
+
+Chain bana sakte ho (.then()) ✅
+
+🔥 Real Example (setTimeout)
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Data aa gaya 🚀");
+    }, 2000);
+  });
+}
+
+fetchData()
+  .then(data => console.log(data))
+  .catch(err => console.log(err));
+🚀 Async/Await (Modern way)
+async function getData() {
+  try {
+    const result = await fetchData();
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+getData();
+🧠 Interview Ready Definition
+
+👉 Promise is an object in JavaScript that represents the eventual completion or failure of an asynchronous operation and its resulting value.
+
+💻 Interview Coding Questions
+❓ Q1: Promise banao jo even number check kare
+Input: 4 → "Even"
+Input: 5 → "Odd error"
+✅ Answer:
+function checkEven(num) {
+  return new Promise((resolve, reject) => {
+    if (num % 2 === 0) {
+      resolve("Even number");
+    } else {
+      reject("Odd number");
+    }
+  });
+}
+
+checkEven(4)
+  .then(res => console.log(res))
+  .catch(err => console.log(err));
+❓ Q2: 3 Promises ko parallel run karo
+
+👉 Hint: Promise.all()
+
+✅ Answer:
+const p1 = Promise.resolve(10);
+const p2 = Promise.resolve(20);
+const p3 = Promise.resolve(30);
+
+Promise.all([p1, p2, p3])
+  .then(res => console.log(res)) // [10,20,30]
+  .catch(err => console.log(err));
+❓ Q3: Output kya hoga?
+const p = new Promise((resolve, reject) => {
+  resolve("Hello");
+});
+
+p.then(data => {
+  console.log(data);
+  return "World";
+}).then(data => {
+  console.log(data);
+});
+
+👉 ✅ Output:
+
+Hello
+World
+🔥 Bonus Tip (Interview me impress karega)
+
+👉 Promise ke kuch important methods:
+
+Promise.all() → sab success chahiye
+
+Promise.race() → jo pehle complete
+
+Promise.allSettled() → sabka result chahiye
+
+Promise.any() → first success
+
+Agar chaho toh next step me mai tumhe real Angular API call (HttpClient + Promise vs Observable) bhi samjha sakta hoon — jo interview me directly kaam aayega 🚀
+
+
+
+
+
+###################
+
+in hinglish  in javascript creating a promise , chaining & error handling kya hai , aye kis liye use hota hai ? kab and q use hota hai mujhe example deke samjhao aur interview k liye coding question v dedo  
+
+
+
+
+
+
+Chalo ab Promises ka complete package samajhte hain Hinglish me 👇
+👉 Creating Promise + Chaining + Error Handling (interview ready 🚀)
+
+🔥 1. Creating a Promise (Promise banana)
+
+👉 Promise ek object hai jo future result ko represent karta hai
+
+📌 Syntax:
+const promise = new Promise((resolve, reject) => {
+  // async kaam
+});
+✅ Example:
+function checkNumber(num) {
+  return new Promise((resolve, reject) => {
+    if (num > 10) {
+      resolve("Number bada hai");
+    } else {
+      reject("Number chota hai");
+    }
+  });
+}
+
+checkNumber(15)
+  .then(res => console.log(res))
+  .catch(err => console.log(err));
+
+👉 Yaha:
+
+resolve() → success
+
+reject() → error
+
+🔗 2. Promise Chaining kya hai?
+
+👉 Jab hum ek ke baad ek .then() use karte hain → usko chaining bolte hain
+
+👉 Har .then() next .then() ko data pass karta hai
+
+❌ Without Chaining (messy)
+getUser(function(user) {
+  getOrders(user.id, function(orders) {
+    console.log(orders);
+  });
+});
+✅ With Chaining (clean)
+getUser()
+  .then(user => {
+    return getOrders(user.id);
+  })
+  .then(orders => {
+    return orders[0];
+  })
+  .then(order => {
+    console.log(order);
+  })
+  .catch(err => console.log(err));
+
+👉 Flow ek line me aa gaya 👍
+
+💥 3. Error Handling kya hai?
+
+👉 Jab promise fail ho jaye → .catch() use karte hain
+
+✅ Example:
+const p = new Promise((resolve, reject) => {
+  let success = false;
+
+  if (success) {
+    resolve("Done");
+  } else {
+    reject("Error aa gaya");
+  }
+});
+
+p.then(res => console.log(res))
+ .catch(err => console.log(err));
+🔥 Important: Chain me error handling
+
+👉 Agar kisi bhi .then() me error aaye → direct .catch() me chala jata hai
+
+getUser()
+  .then(user => {
+    throw new Error("Manual error"); // error throw
+  })
+  .then(data => console.log(data))
+  .catch(err => console.log(err.message));
+
+👉 Output: "Manual error"
+
+🎯 Ye sab kis liye use hota hai?
+
+👉 Async operations handle karne ke liye:
+
+API calls 🌐
+
+Database calls 🗄️
+
+File read 📂
+
+setTimeout ⏱️
+
+🤔 Kab use karte hain?
+
+👉 Jab:
+
+Multiple async steps ho
+
+Ek step ka result dusre pe depend kare
+
+Callback hell avoid karna ho
+
+💡 Q use karte hain?
+
+Code clean hota hai ✅
+
+Readable hota hai ✅
+
+Error handling easy ✅
+
+Chain bana sakte ho ✅
+
+🚀 Real Life Example (API Flow)
+function login() {
+  return Promise.resolve("User logged in");
+}
+
+function getProfile() {
+  return Promise.resolve("Profile data");
+}
+
+function getPosts() {
+  return Promise.resolve("Posts data");
+}
+
+login()
+  .then(res => {
+    console.log(res);
+    return getProfile();
+  })
+  .then(profile => {
+    console.log(profile);
+    return getPosts();
+  })
+  .then(posts => {
+    console.log(posts);
+  })
+  .catch(err => console.log(err));
+🧠 Interview Ready Definition
+
+👉 Creating Promise: Promise object banana jo async result ko handle kare
+👉 Chaining: Multiple .then() use karke sequential execution
+👉 Error Handling: .catch() se errors handle karna
+
+💻 Interview Coding Questions
+❓ Q1: Delay Promise banao (2 sec baad message aaye)
+✅ Answer:
+function delay() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve("2 sec baad aya 🚀");
+    }, 2000);
+  });
+}
+
+delay().then(res => console.log(res));
+❓ Q2: 3 Promises chaining karo (add 10, multiply 2, subtract 5)
+✅ Answer:
+Promise.resolve(5)
+  .then(num => num + 10)   // 15
+  .then(num => num * 2)    // 30
+  .then(num => num - 5)    // 25
+  .then(result => console.log(result))
+  .catch(err => console.log(err));
+❓ Q3: Error handle karo
+Promise.resolve(10)
+  .then(num => {
+    throw new Error("Something wrong");
+  })
+  .then(num => console.log(num))
+  .catch(err => console.log(err.message));
+
+👉 Output: "Something wrong"
+
+🔥 Pro Tip (Interview me bolna)
+
+👉 .finally() bhi hota hai:
+
+fetchData()
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+  .finally(() => console.log("Always run"));
+
+👉 Ye success ya error dono me chalega
+
+🧩 Final Summary
+
+👉 Create → new Promise()
+👉 Chain → .then().then()
+👉 Handle Error → .catch()
+
+Agar chaho next me mai tumhe Promise vs Async/Await tricky interview questions + output based questions kara deta hoon (jo 100% interview me aate hain 🔥)
+
+

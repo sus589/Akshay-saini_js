@@ -1,0 +1,242 @@
+## in hinglish  in javascript Callback functions kya hai , aye kis liye use hota hai ? kab and q use hota hai mujhe example deke samjhao aur interview k liye coding question v dedo 
+
+Chalo Callback Functions ko ekdum simple + interview-ready Hinglish me samajhte hain 👇
+
+🔹 Callback Function kya hota hai?
+
+👉 Callback = function jo kisi dusre function ko argument ke form me pass hota hai
+👉 aur baad me call kiya jata hai
+
+👉 Simple line:
+
+"Function ke andar function pass karna = callback"
+
+🔹 Basic Example
+function greet(name, callback) {
+  console.log("Hello " + name);
+  callback(); // callback call
+}
+
+function sayBye() {
+  console.log("Bye!");
+}
+
+greet("Susmita", sayBye);
+
+👉 Output:
+
+Hello Susmita
+Bye!
+🔹 Yaha kya ho raha hai?
+
+👉 sayBye ko greet ke andar pass kiya
+👉 fir callback() se call kiya
+
+👉 isi ko bolte hain callback function
+
+🔹 Anonymous Callback Example
+function add(a, b, callback) {
+  let result = a + b;
+  callback(result);
+}
+
+add(2, 3, function(res) {
+  console.log(res);
+});
+
+👉 Output:
+
+5
+🔹 Callback ka use kyu hota hai?
+✅ 1. Async Operations (Most Important)
+
+👉 JavaScript async hota hai
+
+setTimeout(function() {
+  console.log("Data loaded");
+}, 2000);
+
+👉 yaha function callback hai
+👉 2 sec baad call hoga
+
+✅ 2. Event Handling
+document.getElementById("btn").addEventListener("click", function() {
+  console.log("Button clicked");
+});
+
+👉 click hone par callback run hota hai
+
+✅ 3. Reusable Logic
+function process(a, b, operation) {
+  return operation(a, b);
+}
+
+const result = process(5, 3, function(x, y) {
+  return x * y;
+});
+
+console.log(result);
+
+👉 Output:
+
+15
+🔹 Callback ka flow kaise hota hai?
+
+Function define hota hai
+
+Callback pass hota hai
+
+Main function execute hota hai
+
+Jab ready → callback call hota hai
+
+🔹 Kab aur kyu use hota hai?
+
+👉 Real projects me:
+
+API calls
+
+Event listeners
+
+Timers (setTimeout, setInterval)
+
+Array methods (map, filter, forEach)
+
+🔹 Real Life Example (Array)
+let arr = [1, 2, 3];
+
+arr.forEach(function(num) {
+  console.log(num);
+});
+
+👉 Output:
+
+1
+2
+3
+
+👉 yaha function = callback
+
+🔹 Callback Hell ❌ (Important)
+setTimeout(() => {
+  console.log("1");
+
+  setTimeout(() => {
+    console.log("2");
+
+    setTimeout(() => {
+      console.log("3");
+    }, 1000);
+
+  }, 1000);
+
+}, 1000);
+
+👉 isko bolte hain callback hell 😵
+
+👉 Solution:
+
+Promises
+
+Async/Await
+
+🔹 Interview Coding Questions 🔥
+Q1️⃣ Output kya hoga?
+function test(callback) {
+  callback();
+}
+
+test(function() {
+  console.log("Hello");
+});
+
+👉 Answer:
+
+Hello
+Q2️⃣ Output kya hoga?
+function calc(a, b, op) {
+  return op(a, b);
+}
+
+const result = calc(2, 3, function(x, y) {
+  return x + y;
+});
+
+console.log(result);
+
+👉 Answer:
+
+5
+Q3️⃣ Tricky 🔥
+setTimeout(function() {
+  console.log("A");
+}, 0);
+
+console.log("B");
+
+👉 Answer:
+
+B
+A
+
+👉 kyunki async behavior
+
+Q4️⃣ Array Callback
+let arr = [1, 2, 3];
+
+let result = arr.map(function(num) {
+  return num * 2;
+});
+
+console.log(result);
+
+👉 Answer:
+
+[2, 4, 6]
+Q5️⃣ Callback create karo
+
+👉 Question:
+Ek function banao jo callback use kare aur number square kare
+
+👉 Solution:
+
+function square(num, callback) {
+  let result = num * num;
+  callback(result);
+}
+
+square(4, function(res) {
+  console.log(res);
+});
+
+👉 Output:
+
+16
+🔹 Interview One-Line Answer
+
+👉 Agar interviewer puche:
+
+"What is a callback function?"
+
+👉 bolo:
+
+"A callback function is a function passed as an argument to another function and is executed later after some operation completes."
+
+🔥 Pro Tip
+
+👉 Callback powerful hai but:
+
+zyada nesting → callback hell
+
+modern JS me:
+👉 Promises
+👉 async/await use karte hain
+
+Agar chaho toh next level bhi sikha deta hoon 🚀
+👉 Promises vs Callback
+👉 Async/Await full clear
+👉 Real Angular API example
+
+Bolna 👍
+
+

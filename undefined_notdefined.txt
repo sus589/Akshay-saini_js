@@ -1,0 +1,139 @@
+## in hinglish  in javascript undefined vs not defined kya hai example deke samjhao aur interview k liye coding question v dedo 
+
+Chalo isko clear aur interview-ready Hinglish me samajhte hain 👇
+
+🔹 undefined vs not defined (JavaScript)
+✅ 1. undefined kya hota hai?
+
+👉 Jab variable declare hua ho but value assign na hui ho, tab uski value undefined hoti hai
+
+Example:
+let a;
+console.log(a);
+Output:
+undefined
+
+👉 Matlab:
+
+variable exist karta hai ✔
+
+but usme koi value nahi hai ❌
+
+❌ 2. not defined kya hota hai?
+
+👉 Jab variable declare hi nahi hua ho, aur tum usko use karte ho
+
+Example:
+console.log(b);
+Output:
+ReferenceError: b is not defined
+
+👉 Matlab:
+
+variable memory me hai hi nahi ❌
+
+🔹 Easy Difference Table
+Feature	undefined ✅	not defined ❌
+Variable declared?	✔ Yes	❌ No
+Value assigned?	❌ No	❌ No
+Error aata hai?	❌ No	✔ Yes
+Type kya hai?	undefined	Error
+🔹 Real Life Example
+let name;
+console.log(name); // undefined
+
+console.log(age);  // not defined
+🔹 Function Example
+function test() {
+  console.log(x); // undefined
+  var x = 10;
+}
+
+test();
+
+👉 Hoisting ki wajah se:
+
+x declare ho gaya
+
+but value baad me assign hui
+
+🔹 Important Concept 🔥
+
+👉 undefined ek value hai
+👉 not defined ek error hai
+
+🔹 Interview Coding Questions
+Q1️⃣ Output kya hoga?
+var a;
+console.log(a);
+
+👉 Answer:
+
+undefined
+Q2️⃣ Output kya hoga?
+console.log(b);
+
+👉 Answer:
+
+ReferenceError: b is not defined
+Q3️⃣ Output kya hoga?
+console.log(x);
+var x = 5;
+
+👉 Answer:
+
+undefined
+
+👉 (Hoisting)
+
+Q4️⃣ Output kya hoga?
+console.log(y);
+let y = 10;
+
+👉 Answer:
+
+ReferenceError
+
+👉 (Temporal Dead Zone)
+
+Q5️⃣ Tricky 🔥
+var a = undefined;
+console.log(a);
+
+👉 Answer:
+
+undefined
+
+👉 BUT:
+
+ye manually assign kiya hai
+
+automatically bhi ho sakta hai
+
+Q6️⃣ Super Tricky 🔥
+if (true) {
+  var x = 10;
+}
+
+console.log(x);
+console.log(y);
+
+👉 Answer:
+
+10
+ReferenceError: y is not defined
+🔹 Interview One-Line Answer
+
+👉 Agar interviewer puche:
+
+"Difference between undefined and not defined?"
+
+👉 bolo:
+
+"Undefined means a variable is declared but not assigned a value, whereas not defined means the variable is not declared at all 
+and accessing it throws a ReferenceError."
+
+Agar chaho toh main tumhe undefined vs null vs NaN (most asked tricky topic) bhi ekdum clear karke de sakta hoon 👍
+
+
+
