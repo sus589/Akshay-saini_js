@@ -1,0 +1,163 @@
+Chalo ekdum clear Hinglish + interview-ready way me samajhte hain 🔥
+Ye saare concepts frontend (JS + Angular/React) me daily use hote hain
+
+🔹 Event Listener kya hota hai?
+
+👉 Jab user koi action karta hai (click, type, focus etc.)
+👉 Us action ko handle karne ke liye jo function use karte hain → event listener
+
+🔹 1. onClick (Click Event)
+
+👉 Jab user button ya element pe click kare
+
+✅ Example:
+document.getElementById("btn").addEventListener("click", function() {
+  console.log("Button clicked");
+});
+🎯 Use kab?
+
+Button click
+
+Form submit
+
+Toggle UI
+
+🔹 2. onBlur
+
+👉 Jab input field se focus hata dete ho
+
+✅ Example:
+input.addEventListener("blur", function() {
+  console.log("Input lost focus");
+});
+🎯 Use kab?
+
+Validation (jab user field chhodta hai)
+
+Email/password check
+
+🔹 3. onChange
+
+👉 Jab input value change ho jaye
+
+✅ Example:
+input.addEventListener("change", function(e) {
+  console.log(e.target.value);
+});
+🎯 Use kab?
+
+Dropdown select
+
+Checkbox change
+
+Form data update
+
+🔹 4. onFocus
+
+👉 Jab input field pe focus aata hai
+
+✅ Example:
+input.addEventListener("focus", function() {
+  console.log("Input focused");
+});
+🎯 Use kab?
+
+Highlight field
+
+UX improve karna
+
+🔥 Quick Difference (IMPORTANT)
+Event	Kab fire hota hai
+click	click karte hi
+focus	field select karte hi
+blur	field chhodte hi
+change	value change hone ke baad
+🔹 5. setTimeout()
+
+👉 Ek function ko delay ke baad run karta hai (sirf 1 baar)
+
+✅ Example:
+setTimeout(() => {
+  console.log("Hello after 2 sec");
+}, 2000);
+🎯 Use kab?
+
+Loader delay
+
+API call delay
+
+Animation
+
+🔹 6. setInterval()
+
+👉 Function ko bar bar repeat karta hai (interval me)
+
+✅ Example:
+setInterval(() => {
+  console.log("Running every 2 sec");
+}, 2000);
+🎯 Use kab?
+
+Clock
+
+Live data refresh
+
+Polling API
+
+🔥 Difference: setTimeout vs setInterval
+Feature	setTimeout	setInterval
+Run	1 baar	bar bar
+Use	delay	repeat
+💯 Real Life Example
+👉 Auto logout after 5 sec:
+setTimeout(() => {
+  console.log("User logged out");
+}, 5000);
+👉 Live counter:
+let count = 0;
+
+setInterval(() => {
+  count++;
+  console.log(count);
+}, 1000);
+🔥 Interview Coding Questions
+✅ Q1: Button click pe text change karo
+btn.addEventListener("click", () => {
+  document.getElementById("text").innerText = "Clicked!";
+});
+✅ Q2: Input blur pe validation
+input.addEventListener("blur", () => {
+  if (input.value === "") {
+    console.log("Field required");
+  }
+});
+✅ Q3: Timer stop karo (IMPORTANT 🔥)
+let id = setInterval(() => {
+  console.log("Running...");
+}, 1000);
+
+setTimeout(() => {
+  clearInterval(id);
+}, 5000);
+✅ Q4: Debounce (Advanced 🔥🔥)
+let timeout;
+
+input.addEventListener("keyup", () => {
+  clearTimeout(timeout);
+
+  timeout = setTimeout(() => {
+    console.log("API Call", input.value);
+  }, 500);
+});
+
+👉 Interview me bahut poocha jata hai
+
+🎯 Final Interview Lines (yaad rakhna 🔥)
+
+👉 “Event listeners are used to handle user interactions.”
+👉 “onClick, onBlur, onFocus, onChange are common DOM events.”
+👉 “setTimeout runs once after delay, setInterval runs repeatedly.”
+
+Agar chaho to main tumhe Angular me (click, change, reactive form events + RxJS debounce) bhi sikha deta hoon 🔥
+
+

@@ -1,0 +1,13 @@
+https://chatgpt.com/share/69ba8297-9684-8003-9b0d-136a048579e3
+
+2️⃣ Projects strong banao (ye sabse important hai)
+
+Tum Angular dev ho → toh ye projects zarur add karo:
+
+Betting App (jo tum already bana rahe ho)
+
+CRUD App with API
+
+Dashboard UI
+
+👉 GitHub + Live link dalna = call chances 2x
