@@ -1,0 +1,213 @@
+Chalo ab Debouncing vs Throttling ko ekdum simple Hinglish me samajhte hain 👇🔥
+(ye frontend + Angular interview me bahut important hai 😎)
+
+🔥 Problem kya hai?
+
+👉 Kuch events bahut baar-baar fire hote hain:
+
+keyup (typing)
+
+scroll
+
+resize
+
+button click spam
+
+👉 Agar har baar API call karoge → ❌ performance slow + server overload
+
+🎯 Solution: Debouncing & Throttling
+⏳ 1. Debouncing kya hai?
+
+👉 "Last event ke baad hi function chale"
+
+👉 Matlab:
+
+Jab tak user type karta rahe → function call nahi hoga
+
+Jab user rukega → tab call hoga
+
+📦 Real Example
+
+👉 Search box 🔍
+
+User: a → ap → app → appl → apple
+
+API call sirf last me (apple)
+
+✅ Code Example
+function debounce(fn, delay) {
+  let timer;
+
+  return function (...args) {
+    clearTimeout(timer);
+
+    timer = setTimeout(() => {
+      fn.apply(this, args);
+    }, delay);
+  };
+}
+
+// use
+function search(value) {
+  console.log("API Call:", value);
+}
+
+const debouncedSearch = debounce(search, 1000);
+
+// simulate typing
+debouncedSearch("a");
+debouncedSearch("ap");
+debouncedSearch("app");
+
+👉 Output: sirf last "app"
+
+⚡ 2. Throttling kya hai?
+
+👉 "Fixed interval me ek baar hi function chale"
+
+👉 Matlab:
+
+Chahe event kitni baar aaye → function limited time me ek hi baar chalega
+
+📦 Real Example
+
+👉 Scroll event 📜
+
+User fast scroll kare → function har 1 sec me ek baar chale
+
+✅ Code Example
+function throttle(fn, limit) {
+  let flag = true;
+
+  return function (...args) {
+    if (flag) {
+      fn.apply(this, args);
+      flag = false;
+
+      setTimeout(() => {
+        flag = true;
+      }, limit);
+    }
+  };
+}
+
+// use
+function handleScroll() {
+  console.log("Scroll event");
+}
+
+const throttledScroll = throttle(handleScroll, 1000);
+
+// multiple calls
+window.addEventListener("scroll", throttledScroll);
+⚔️ Difference (Important 🔥)
+Feature	Debouncing	Throttling
+Kab run hota hai	Last event ke baad	Fixed interval me
+Use case	Search input	Scroll, resize
+Calls	Ek hi (last)	Limited multiple
+Delay	Reset hota rehta hai	Constant interval
+🎯 Kis liye use hota hai?
+
+👉 Performance optimize karne ke liye
+
+🤔 Kab use karte hain?
+✅ Debounce use karo:
+
+Search input 🔍
+
+Auto-suggestions
+
+Form validation
+
+✅ Throttle use karo:
+
+Scroll events 📜
+
+Resize window 🖥️
+
+Button spam control
+
+💡 Q use karte hain?
+
+API calls kam hoti hain ✅
+
+Performance fast hota hai ✅
+
+UI smooth hota hai ✅
+
+🔥 Real Angular Use Case
+
+👉 Tumhare project me:
+
+Search API → Debounce
+
+Live betting updates / scroll UI → Throttle
+
+🧠 Interview Ready Definition
+
+👉 Debouncing delays the execution until after a certain time has passed since the last event.
+Throttling limits the execution to once in a specified interval.
+
+💻 Interview Coding Questions
+❓ Q1: Debounce function likho
+
+👉 Expected:
+
+function debounce(fn, delay) {
+  let timer;
+
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.apply(this, args);
+    }, delay);
+  };
+}
+❓ Q2: Throttle function likho
+
+👉 Expected:
+
+function throttle(fn, limit) {
+  let flag = true;
+
+  return function (...args) {
+    if (flag) {
+      fn.apply(this, args);
+      flag = false;
+
+      setTimeout(() => {
+        flag = true;
+      }, limit);
+    }
+  };
+}
+❓ Q3: Output kya hoga?
+const fn = debounce(() => console.log("Hello"), 1000);
+
+fn();
+fn();
+fn();
+
+👉 ✅ Output:
+👉 "Hello" (sirf ek baar)
+
+🔥 Pro Tip (Interview me bolna)
+
+👉 Lodash me ready-made functions hote hain:
+
+_.debounce()
+_.throttle()
+
+👉 Real projects me mostly yehi use hota hai 👍
+
+🚀 Final Summary
+
+👉 Debounce → last call
+👉 Throttle → limited calls
+
+Agar chaho next mai tumhe:
+
+👉 Event Loop + Microtask Queue (Promise vs setTimeout tricky)
+👉 ya Top 50 JavaScript interview questions
+
+bhi kara deta hoon 😎🔥

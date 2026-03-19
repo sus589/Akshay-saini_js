@@ -1,0 +1,200 @@
+Chalo ab call(), apply(), bind() ko ekdum clear Hinglish me samajhte hain 👇🔥
+(ye this control karne ke liye sabse important topic hai – interview favourite 😎)
+
+🔥 Sabse pehle: this kya hota hai?
+
+👉 this ka matlab hota hai current object jispe function run ho raha hai
+
+const user = {
+  name: "Susmita",
+  greet: function() {
+    console.log(this.name);
+  }
+};
+
+user.greet(); // Susmita
+🎯 Problem kya hai?
+
+👉 Agar function ko alag call karo:
+
+const user = {
+  name: "Susmita"
+};
+
+function greet() {
+  console.log(this.name);
+}
+
+greet(); // undefined (browser me window)
+
+👉 Yaha this lost ho gaya ❌
+
+🔥 Solution: call(), apply(), bind()
+📞 1. call() kya hai?
+
+👉 Function ko immediately call karta hai aur this set karta hai
+
+✅ Syntax:
+functionName.call(thisArg, arg1, arg2);
+✅ Example:
+const user = { name: "Susmita" };
+
+function greet(age) {
+  console.log(this.name, age);
+}
+
+greet.call(user, 25);
+
+👉 Output:
+
+Susmita 25
+🧾 2. apply() kya hai?
+
+👉 Same as call()
+👉 Bas difference: arguments array me pass hote hain
+
+✅ Syntax:
+functionName.apply(thisArg, [arg1, arg2]);
+✅ Example:
+const user = { name: "Susmita" };
+
+function greet(age, city) {
+  console.log(this.name, age, city);
+}
+
+greet.apply(user, [25, "Delhi"]);
+
+👉 Output:
+
+Susmita 25 Delhi
+🔗 3. bind() kya hai?
+
+👉 Function ko turant call nahi karta
+👉 Ek new function return karta hai jisme this bind hota hai
+
+✅ Syntax:
+const newFunc = functionName.bind(thisArg);
+✅ Example:
+const user = { name: "Susmita" };
+
+function greet() {
+  console.log(this.name);
+}
+
+const newFunc = greet.bind(user);
+
+newFunc(); // Susmita
+⚔️ Difference (Important 🔥)
+Method	Call hota hai?	Arguments
+call()	✅ immediately	normal
+apply()	✅ immediately	array
+bind()	❌ baad me call	normal
+🎯 Kis liye use hota hai?
+
+👉 this ko control karne ke liye
+
+🤔 Kab use karte hain?
+
+👉 Jab:
+
+Function kisi aur object ke context me chalana ho
+
+Event handlers me this lose ho raha ho
+
+Reusable function banana ho
+
+💡 Q use karte hain?
+
+Code reuse hota hai ✅
+
+this fix kar sakte ho ✅
+
+Flexible function calling ✅
+
+🔥 Real Life Example (Important)
+const person1 = { name: "A" };
+const person2 = { name: "B" };
+
+function sayHello() {
+  console.log("Hello " + this.name);
+}
+
+sayHello.call(person1); // Hello A
+sayHello.call(person2); // Hello B
+⚡ Event Example (bind use hota hai)
+class App {
+  constructor() {
+    this.name = "Susmita";
+  }
+
+  showName() {
+    console.log(this.name);
+  }
+}
+
+const app = new App();
+const btn = document.querySelector("button");
+
+// without bind → undefined
+btn.addEventListener("click", app.showName.bind(app));
+🧠 Interview Ready Definition
+
+👉 call(), apply(), and bind() are methods in JavaScript used to control the value of this inside a function.
+
+💻 Interview Coding Questions
+❓ Q1: call() use karke output lao
+const obj = { name: "Rahul" };
+
+function print() {
+  console.log(this.name);
+}
+✅ Answer:
+print.call(obj);
+❓ Q2: apply() use karke max find karo
+const arr = [10, 20, 5, 40];
+✅ Answer:
+const max = Math.max.apply(null, arr);
+console.log(max); // 40
+❓ Q3: bind() use karke function fix karo
+const user = { name: "Amit" };
+
+function greet() {
+  console.log(this.name);
+}
+
+const fn = greet.bind(user);
+fn();
+
+👉 Output:
+
+Amit
+🔥 Tricky Interview Question
+
+👉 Output kya hoga?
+
+const obj = {
+  name: "JS"
+};
+
+function test() {
+  console.log(this.name);
+}
+
+const fn = test.bind(obj);
+fn.call({ name: "Wrong" });
+
+👉 ✅ Output:
+
+JS
+
+👉 Reason: bind highest priority deta hai this ko 🔥
+
+🚀 Final Summary
+
+👉 call() → immediate call
+👉 apply() → array args
+👉 bind() → new function return
+
+Agar chaho toh next mai tumhe this keyword deep + arrow function vs normal function (interview tricky) samjha deta hoon 😎🔥
+
+

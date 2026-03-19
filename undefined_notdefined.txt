@@ -33,11 +33,11 @@ ReferenceError: b is not defined
 variable memory me hai hi nahi ❌
 
 🔹 Easy Difference Table
-Feature	undefined ✅	not defined ❌
-Variable declared?	✔ Yes	❌ No
-Value assigned?	❌ No	❌ No
-Error aata hai?	❌ No	✔ Yes
-Type kya hai?	undefined	Error
+Feature	                  undefined ✅	         not defined ❌
+Variable declared?         	✔ Yes	                 ❌ No
+Value assigned?	            ❌ No	                ❌ No
+Error aata hai?	            ❌ No	                 ✔ Yes
+Type kya hai?	               undefined            	Error
 🔹 Real Life Example
 let name;
 console.log(name); // undefined
