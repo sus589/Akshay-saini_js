@@ -145,7 +145,8 @@ async function runParallel() {
 }
 🧠 Interview Ready Definition
 
-👉 Async/await is a syntactic sugar over Promises that allows writing asynchronous code in a synchronous manner, improving readability and maintainability.
+👉 Async/await is a syntactic sugar over Promises that allows writing asynchronous code in a synchronous manner,
+ improving readability and maintainability.
 
 ⚠️ Important Points (interview me puchte hain)
 
@@ -213,4 +214,6 @@ B
 👉 Promise.all() → parallel execution
 
 Agar chaho toh next mai tumhe Event Loop + Microtask Queue + async/await internal working bhi deep me samjha deta hoon (ye senior level interview me aata hai 🔥)
+
+
 

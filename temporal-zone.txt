@@ -78,11 +78,11 @@ console.log(a); ❌
 // TDZ end
 let a = 10;
 🔹 var vs let vs const
-Feature	var	let	const
-Scope	Function	Block	Block
-Hoisting	✔ (undefined)	✔ (TDZ)	✔ (TDZ)
-Reassign	✔	✔	❌
-Redeclare	✔	❌	❌
+Feature	    var	           let	    const
+Scope	v    Function      	Block	   Block
+Hoisting	 ✔ (undefined)	✔ (TDZ)	✔ (TDZ)
+Reassign	     ✔	        ✔	         ❌
+Redeclare	     ✔         	❌	        ❌
 🔹 Real Example
 if (true) {
   let x = 10;

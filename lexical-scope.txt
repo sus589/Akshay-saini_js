@@ -137,15 +137,12 @@ c(); // 2
 
 🔹 Use kyu hota hai?
 ✅ 1. Variable access control
-
 👉 kaha variable accessible hoga
 
-✅ 2. Data hiding
-
+✅ 2. Data hiding 
 👉 closure ke through private variables
 
 ✅ 3. Memory management
-
 👉 unnecessary global variables avoid
 
 🔹 Kab use hota hai?
